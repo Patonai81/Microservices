@@ -29,7 +29,8 @@ public class BonusController implements BonusApi {
                 .orElseGet(Bonus::new)
                 .getPoints();
     }
-    
+
+    @PreAuthorize("authentication.name == #user")
     @Override
     public double addPoints(String user, double pointsToAdd) {
         try {
