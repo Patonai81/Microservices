@@ -27,9 +27,9 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
-                .withUser("user").authorities("USER").password(passwordEncoder().encode("pass"))
+                .withUser("user").authorities("user","search").password(passwordEncoder().encode("pass"))
                 .and()
-                .withUser("admin").authorities("ADMIN").password(passwordEncoder().encode("pass"));
+                .withUser("admin").authorities("admin").password(passwordEncoder().encode("pass"));
     }
 
 
