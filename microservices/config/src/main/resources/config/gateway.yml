@@ -26,3 +26,9 @@ spring:
         - Path=/bonus/**
         filters:
         - RewritePath=/bonus(?<segment>/?.*), /api$\{segment}
+      - id: login
+        uri: lb://login
+        predicates:
+        - Path=/login/**
+        filters:
+        - RewritePath=/login(?<segment>/?.*), /api$\{segment}

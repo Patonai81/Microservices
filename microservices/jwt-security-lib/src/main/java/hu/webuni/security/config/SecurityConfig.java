@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 @Slf4j
 @Configuration
@@ -29,7 +30,7 @@ public class SecurityConfig {
         try {
             return keyManagerService.getVerifier();
         } catch (Exception e) {
-            log.error("Unable to init Verifier");
+            log.error("Unable to init Verifier",e);
         }
         return null;
     }

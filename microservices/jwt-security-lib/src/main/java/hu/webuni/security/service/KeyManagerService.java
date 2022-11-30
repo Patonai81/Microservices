@@ -15,7 +15,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-@Service
+@Service("KeyManagerService")
 public class KeyManagerService {
 
     @Value("${hu.webuni.secret.dir}")
@@ -78,7 +78,7 @@ public class KeyManagerService {
     }
 
     public RSAPublicKey readPublicKey() throws Exception {
-        File keyFile = new File(System.getProperty("user.home"), directory+""+publicKey);
+        File keyFile = new File(System.getProperty("user.home"), directory+"/"+publicKey);
         try (InputStream inputStream = new FileInputStream(keyFile)) {
             byte[] keyBytes = toBytes(inputStream);
             X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
